@@ -1,0 +1,319 @@
+[
+  {
+    "id": "ban2",
+    "R": [
+      {
+        "case_name": "ban2",
+        "team": "R",
+        "phase": 1,
+        "hero_id": 136,
+        "hero_name": "Marci",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "R",
+        "phase": 2,
+        "hero_id": 71,
+        "hero_name": "Spirit Breaker",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "R",
+        "phase": 3,
+        "hero_id": 89,
+        "hero_name": "Naga Siren",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "R",
+        "phase": 4,
+        "hero_id": 86,
+        "hero_name": "Rubick",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "R",
+        "phase": 5,
+        "hero_id": 76,
+        "hero_name": "Outworld Destroyer",
+        "source": "model"
+      }
+    ],
+    "D": [
+      {
+        "case_name": "ban2",
+        "team": "D",
+        "phase": 1,
+        "hero_id": 120,
+        "hero_name": "Pangolier",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "D",
+        "phase": 2,
+        "hero_id": 65,
+        "hero_name": "Batrider",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "D",
+        "phase": 3,
+        "hero_id": 103,
+        "hero_name": "Elder Titan",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "D",
+        "phase": 4,
+        "hero_id": 10,
+        "hero_name": "Morphling",
+        "source": "model"
+      },
+      {
+        "case_name": "ban2",
+        "team": "D",
+        "phase": 5,
+        "hero_id": 6,
+        "hero_name": "Drow Ranger",
+        "source": "model"
+      }
+    ],
+    "B": {
+      "R": [
+        3,
+        60,
+        34,
+        47,
+        43,
+        87,
+        30
+      ],
+      "D": [
+        66,
+        38,
+        37,
+        99,
+        44,
+        33,
+        126
+      ]
+    }
+  },
+  {
+    "id": "ban7_pick2",
+    "R": [
+      {
+        "case_name": "ban7_pick2",
+        "team": "R",
+        "phase": 1,
+        "hero_id": 7,
+        "hero_name": "Earthshaker",
+        "source": "given"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "R",
+        "phase": 2,
+        "hero_id": 38,
+        "hero_name": "Beastmaster",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "R",
+        "phase": 3,
+        "hero_id": 120,
+        "hero_name": "Pangolier",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "R",
+        "phase": 4,
+        "hero_id": 43,
+        "hero_name": "Death Prophet",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "R",
+        "phase": 5,
+        "hero_id": 47,
+        "hero_name": "Viper",
+        "source": "model"
+      }
+    ],
+    "D": [
+      {
+        "case_name": "ban7_pick2",
+        "team": "D",
+        "phase": 1,
+        "hero_id": 89,
+        "hero_name": "Naga Siren",
+        "source": "given"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "D",
+        "phase": 2,
+        "hero_id": 136,
+        "hero_name": "Marci",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "D",
+        "phase": 3,
+        "hero_id": 86,
+        "hero_name": "Rubick",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "D",
+        "phase": 4,
+        "hero_id": 65,
+        "hero_name": "Batrider",
+        "source": "model"
+      },
+      {
+        "case_name": "ban7_pick2",
+        "team": "D",
+        "phase": 5,
+        "hero_id": 10,
+        "hero_name": "Morphling",
+        "source": "model"
+      }
+    ],
+    "B": {
+      "R": [
+        3,
+        96,
+        129,
+        60,
+        37,
+        33,
+        99
+      ],
+      "D": [
+        66,
+        16,
+        58,
+        114,
+        34,
+        87,
+        76
+      ]
+    }
+  },
+  {
+    "id": "last_counter",
+    "R": [
+      {
+        "case_name": "last_counter",
+        "team": "R",
+        "phase": 1,
+        "hero_id": 7,
+        "hero_name": "Earthshaker",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "R",
+        "phase": 2,
+        "hero_id": 79,
+        "hero_name": "Shadow Demon",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "R",
+        "phase": 3,
+        "hero_id": 11,
+        "hero_name": "Shadow Fiend",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "R",
+        "phase": 4,
+        "hero_id": 45,
+        "hero_name": "Pugna",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "R",
+        "phase": 5,
+        "hero_id": 8,
+        "hero_name": "Juggernaut",
+        "source": "given"
+      }
+    ],
+    "D": [
+      {
+        "case_name": "last_counter",
+        "team": "D",
+        "phase": 1,
+        "hero_id": 89,
+        "hero_name": "Naga Siren",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "D",
+        "phase": 2,
+        "hero_id": 120,
+        "hero_name": "Pangolier",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "D",
+        "phase": 3,
+        "hero_id": 87,
+        "hero_name": "Disruptor",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "D",
+        "phase": 4,
+        "hero_id": 94,
+        "hero_name": "Medusa",
+        "source": "given"
+      },
+      {
+        "case_name": "last_counter",
+        "team": "D",
+        "phase": 5,
+        "hero_id": 34,
+        "hero_name": "Tinker",
+        "source": "model"
+      }
+    ],
+    "B": {
+      "R": [
+        3,
+        96,
+        129,
+        99,
+        1
+      ],
+      "D": [
+        66,
+        16,
+        58,
+        114,
+        69
+      ]
+    }
+  }
+]
