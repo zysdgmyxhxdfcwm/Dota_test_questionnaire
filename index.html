@@ -1,228 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dota 2 Draft Viewer</title>
-
-  <style>
-    body {
-      background-color: #1b1f24;
-      color: #fff;
-      font-family: "Segoe UI", sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
-    }
-
-    h1 {
-      margin-bottom: 30px;
-      font-size: 28px;
-      letter-spacing: 1px;
-      color: #f5f5f5;
-    }
-
-    .draft-container {
-      display: flex;
-      justify-content: space-between;
-      width: 90%;
-      max-width: 1200px;
-      gap: 40px;
-    }
-
-    .team {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #2a2f36;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 10px #0006;
-    }
-
-    .team h2 {
-      margin-bottom: 15px;
-      font-size: 22px;
-    }
-
-    .ban-phase, .pick-phase {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-
-    .hero-slot {
-      width: 80px;
-      height: 45px;
-      position: relative;
-      border-radius: 6px;
-      overflow: hidden;
-      transition: transform 0.2s ease;
-    }
-
-    .hero-slot img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 6px;
-    }
-
-    .hero-slot:hover {
-      transform: scale(1.08);
-      z-index: 2;
-    }
-
-    .highlight {
-      outline: 3px solid #ffcc00;
-      box-shadow: 0 0 10px #ffcc00;
-    }
-
-    .tooltip {
-      position: absolute;
-      bottom: 110%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      color: #fff;
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 13px;
-      white-space: nowrap;
-      display: none;
-    }
-
-    .hero-slot:hover .tooltip {
-      display: block;
-    }
-
-    .section-label {
-      font-size: 16px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      color: #ccc;
-    }
-
-    .radiant h2 { color: #9be39b; }
-    .dire h2 { color: #e06060; }
-
-  </style>
+<meta charset="UTF-8">
+<title>Dota2 Draft Survey</title>
+<style>
+  body { font-family: Arial, sans-serif; background:#1a1a1a; color:#fff; margin:20px; }
+  h2 { text-align:center; margin-bottom:40px; }
+  .question { margin-bottom:50px; padding:20px; background:#222; border-radius:8px; }
+  .draft-section { display:flex; justify-content:space-between; margin:10px 0; }
+  .team { width:48%; }
+  .team h3 { text-align:center; margin-bottom:10px; }
+  .heroes-row { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
+  .hero { width:64px; height:36px; }
+  .hero img { width:100%; height:100%; border-radius:4px; border:2px solid transparent; }
+  .pick-hero img { border-color: gold; box-shadow: 0 0 8px gold; }
+  .options { margin-top:15px; display:flex; flex-direction:column; gap:5px; }
+  button { margin-top:20px; padding:10px 20px; font-size:16px; border:none; border-radius:5px; cursor:pointer; }
+</style>
 </head>
-
 <body>
-  <h1>Dota 2 Draft Visualization</h1>
-  <div class="draft-container">
-    <div class="team radiant">
-      <h2>Radiant</h2>
-      <div class="section-label">Bans</div>
-      <div class="ban-phase" id="radiant-bans"></div>
-      <div class="section-label">Picks</div>
-      <div class="pick-phase" id="radiant-picks"></div>
-    </div>
 
-    <div class="team dire">
-      <h2>Dire</h2>
-      <div class="section-label">Bans</div>
-      <div class="ban-phase" id="dire-bans"></div>
-      <div class="section-label">Picks</div>
-      <div class="pick-phase" id="dire-picks"></div>
-    </div>
-  </div>
+<h2>给下面这个阵容打分</h2>
+<div id="survey"></div>
 
-  <script>
-    async function loadData() {
-      const [draftRes, heroesRes] = await Promise.all([
-        fetch('./draft_results.json'),
-        fetch('./heroes.json')
-      ]);
-      const draftData = await draftRes.json();
-      const heroes = await heroesRes.json();
+<button id="submit">提交问卷</button>
 
-      // 取第一个 draft 示例（如有多个可扩展）
-      const draft = Array.isArray(draftData) ? draftData[0] : draftData;
+<script>
+async function loadSurvey() {
+  const draftRes = await fetch('draft_results.json');
+  const drafts = await draftRes.json(); // 假设是数组形式或对象形式
+  const heroesRes = await fetch('heroes.json');
+  const heroes = await heroesRes.json();
 
-      renderDraft(draft, heroes);
-    }
+  const surveyContainer = document.getElementById('survey');
 
-    function renderDraft(draft, heroes) {
-      const radiantBans = document.getElementById("radiant-bans");
-      const direBans = document.getElementById("dire-bans");
-      const radiantPicks = document.getElementById("radiant-picks");
-      const direPicks = document.getElementById("dire-picks");
+  // 把draft_results.json按对象形式转数组
+  const draftArray = Array.isArray(drafts) ? drafts : Object.values(drafts);
 
-      radiantBans.innerHTML = '';
-      direBans.innerHTML = '';
-      radiantPicks.innerHTML = '';
-      direPicks.innerHTML = '';
+  draftArray.forEach((draft, index) => {
+    const questionDiv = document.createElement('div');
+    questionDiv.className = 'question';
+    questionDiv.dataset.draftId = draft.id;
 
-      // 渲染 Ban 阶段
-      draft.R.forEach(ban => {
-        const slot = createHeroSlot(ban, heroes);
-        radiantBans.appendChild(slot);
-      });
-      draft.D.forEach(ban => {
-        const slot = createHeroSlot(ban, heroes);
-        direBans.appendChild(slot);
-      });
-
-      // 渲染 Pick 阶段
-      draft.B.R.forEach(hero_id => {
-        const hero = findHeroById(hero_id, heroes);
-        const slot = createHeroSlot(hero, heroes);
-        radiantPicks.appendChild(slot);
-      });
-      draft.B.D.forEach(hero_id => {
-        const hero = findHeroById(hero_id, heroes);
-        const slot = createHeroSlot(hero, heroes);
-        direPicks.appendChild(slot);
+    // 创建 Draft 区域
+    function renderDraft(container, heroArray, isPick=false) {
+      container.innerHTML = '';
+      heroArray.forEach(heroItem => {
+        let heroData;
+        if(isPick){
+          heroData = Object.values(heroes).find(h=>h.id===heroItem);
+        }else{
+          const key = heroItem.hero_name.toLowerCase().replace(/\s+/g,"_");
+          heroData = heroes[key];
+        }
+        if(!heroData) return;
+        const div = document.createElement('div');
+        div.className = 'hero';
+        if(isPick) div.classList.add('pick-hero');
+        const img = document.createElement('img');
+        img.src = heroData.image;
+        img.title = heroData.name;
+        div.appendChild(img);
+        container.appendChild(div);
       });
     }
 
-    function findHeroById(id, heroes) {
-      for (const key in heroes) {
-        if (heroes[key].id === id) return heroes[key];
-      }
-      return { name: "Unknown", image: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/default_full.png" };
-    }
+    // Pick 阶段
+    const pickSection = document.createElement('div');
+    pickSection.className = 'draft-section';
+    const radiantPick = document.createElement('div'); radiantPick.className='team';
+    radiantPick.innerHTML='<h3>Radiant Pick</h3><div class="heroes-row"></div>';
+    const direPick = document.createElement('div'); direPick.className='team';
+    direPick.innerHTML='<h3>Dire Pick</h3><div class="heroes-row"></div>';
+    pickSection.appendChild(radiantPick);
+    pickSection.appendChild(direPick);
+    renderDraft(radiantPick.querySelector('.heroes-row'), draft.B.R, true);
+    renderDraft(direPick.querySelector('.heroes-row'), draft.B.D, true);
 
-    function createHeroSlot(hero, heroes) {
-      const slot = document.createElement("div");
-      slot.classList.add("hero-slot");
+    // Ban 阶段
+    const banSection = document.createElement('div');
+    banSection.className='draft-section';
+    const radiantBan = document.createElement('div'); radiantBan.className='team';
+    radiantBan.innerHTML='<h3>Radiant Ban</h3><div class="heroes-row"></div>';
+    const direBan = document.createElement('div'); direBan.className='team';
+    direBan.innerHTML='<h3>Dire Ban</h3><div class="heroes-row"></div>';
+    banSection.appendChild(radiantBan);
+    banSection.appendChild(direBan);
+    renderDraft(radiantBan.querySelector('.heroes-row'), draft.R);
+    renderDraft(direBan.querySelector('.heroes-row'), draft.D);
 
-      // 判断是否模型补出
-      if (hero.source === "model") {
-        slot.classList.add("highlight");
-      }
+    questionDiv.appendChild(pickSection);
+    questionDiv.appendChild(banSection);
 
-      // 获取图片
-      let imageUrl;
-      if (hero.image) {
-        imageUrl = hero.image;
-      } else {
-        const key = hero.hero_name
-          ? hero.hero_name.toLowerCase().replace(/\s+/g, "_")
-          : hero.name.toLowerCase().replace(/\s+/g, "_");
-        imageUrl = heroes[key]?.image || "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/default_full.png";
-      }
+    // 选项
+    const optionsDiv = document.createElement('div');
+    optionsDiv.className='options';
+    const labels = [
+      'A. Radiant一边倒',
+      'B. Radiant略有优势',
+      'C. 势均力敌',
+      'D. Dire略有优势',
+      'E. Dire一边倒'
+    ];
+    labels.forEach((label,i)=>{
+      const id = `q${index}_option${i}`;
+      const option = document.createElement('label');
+      option.innerHTML = `<input type="radio" name="q${index}" value="${label}" id="${id}"> ${label}`;
+      optionsDiv.appendChild(option);
+    });
+    questionDiv.appendChild(optionsDiv);
 
-      const img = document.createElement("img");
-      img.src = imageUrl;
-      img.alt = hero.hero_name || hero.name || "Unknown";
+    surveyContainer.appendChild(questionDiv);
+  });
+}
 
-      const tooltip = document.createElement("div");
-      tooltip.classList.add("tooltip");
-      tooltip.textContent = hero.hero_name || hero.name || "Unknown";
+loadSurvey();
 
-      slot.appendChild(img);
-      slot.appendChild(tooltip);
+// 收集结果
+document.getElementById('submit').addEventListener('click',()=>{
+  const surveyContainer = document.getElementById('survey');
+  const questions = surveyContainer.querySelectorAll('.question');
+  const results = {};
+  questions.forEach(q=>{
+    const draftId = q.dataset.draftId;
+    const selected = q.querySelector('input[type=radio]:checked');
+    results[draftId] = selected ? selected.value : null;
+  });
+  console.log('问卷结果:', results);
+  alert('问卷结果已打印到控制台！');
+  // 可以将 results JSON 上传到服务器或生成下载
+});
+</script>
 
-      return slot;
-    }
-
-    loadData();
-  </script>
 </body>
 </html>
