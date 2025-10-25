@@ -2,135 +2,148 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dota2 Draft Survey</title>
+<title>Dota 2 Draft Questionnaire</title>
 <style>
-  body { font-family: Arial, sans-serif; background:#1a1a1a; color:#fff; margin:20px; }
-  h2 { text-align:center; margin-bottom:40px; }
-  .question { margin-bottom:50px; padding:20px; background:#222; border-radius:8px; }
-  .draft-section { display:flex; justify-content:space-between; margin:10px 0; }
-  .team { width:48%; }
-  .team h3 { text-align:center; margin-bottom:10px; }
-  .heroes-row { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
-  .hero { width:64px; height:36px; }
-  .hero img { width:100%; height:100%; border-radius:4px; border:2px solid transparent; }
-  .pick-hero img { border-color: gold; box-shadow: 0 0 8px gold; }
-  .options { margin-top:15px; display:flex; flex-direction:column; gap:5px; }
-  button { margin-top:20px; padding:10px 20px; font-size:16px; border:none; border-radius:5px; cursor:pointer; }
+body { font-family: Arial, sans-serif; background:#1a1a1a; color:#fff; margin:20px; }
+h2 { text-align:center; }
+.question { margin-bottom:50px; padding:20px; border:1px solid #444; border-radius:8px; }
+.draft-section { display:flex; justify-content:space-between; margin:10px 0; }
+.team { width:48%; }
+.team h3 { text-align:center; margin-bottom:10px; }
+.heroes-row { display:flex; justify-content:center; flex-wrap:wrap; gap:10px; }
+.hero { width:64px; height:36px; position:relative; }
+.hero img { width:100%; height:100%; border-radius:4px; border:2px solid transparent; transition: transform 0.2s, border 0.2s; }
+.hero img:hover { transform: scale(1.2); z-index:1; }
+.pick img { border-color: gold; box-shadow:0 0 10px gold; }
+.options { margin-top:10px; }
+.options label { margin-right:15px; cursor:pointer; }
+button { margin-top:20px; padding:10px 20px; font-size:16px; border:none; border-radius:5px; background:gold; color:#000; cursor:pointer; }
 </style>
 </head>
 <body>
 
-<h2>给下面这个阵容打分</h2>
-<div id="survey"></div>
-
-<button id="submit">提交问卷</button>
+<h2>请对下面的阵容打分</h2>
+<div id="questionnaire"></div>
+<button id="submitBtn">提交</button>
 
 <script>
-async function loadSurvey() {
-  const draftRes = await fetch('draft_results.json');
-  const drafts = await draftRes.json(); // 假设是数组形式或对象形式
-  const heroesRes = await fetch('heroes.json');
+async function loadQuestionnaire() {
+  const draftRes = await fetch("draft_results.json");
+  const drafts = await draftRes.json();
+
+  const heroesRes = await fetch("heroes.json");
   const heroes = await heroesRes.json();
 
-  const surveyContainer = document.getElementById('survey');
+  const container = document.getElementById("questionnaire");
 
-  // 把draft_results.json按对象形式转数组
-  const draftArray = Array.isArray(drafts) ? drafts : Object.values(drafts);
+  drafts.forEach((draft, index) => {
+    const qDiv = document.createElement("div");
+    qDiv.className = "question";
+    qDiv.id = `question-${index}`;
 
-  draftArray.forEach((draft, index) => {
-    const questionDiv = document.createElement('div');
-    questionDiv.className = 'question';
-    questionDiv.dataset.draftId = draft.id;
+    // 标题
+    const h3 = document.createElement("h3");
+    h3.textContent = `题目 ${index+1}: ${draft.id}`;
+    qDiv.appendChild(h3);
 
-    // 创建 Draft 区域
-    function renderDraft(container, heroArray, isPick=false) {
-      container.innerHTML = '';
-      heroArray.forEach(heroItem => {
-        let heroData;
-        if(isPick){
-          heroData = Object.values(heroes).find(h=>h.id===heroItem);
-        }else{
-          const key = heroItem.hero_name.toLowerCase().replace(/\s+/g,"_");
-          heroData = heroes[key];
-        }
+    // Pick 阶段（上方）
+    const pickSection = document.createElement("div");
+    pickSection.className = "draft-section";
+    ["R","D"].forEach(team=>{
+      const teamDiv = document.createElement("div");
+      teamDiv.className = "team";
+      const teamName = document.createElement("h3");
+      teamName.textContent = team==="R"?"Radiant Pick":"Dire Pick";
+      teamDiv.appendChild(teamName);
+
+      const row = document.createElement("div");
+      row.className="heroes-row";
+
+      draft[team].forEach(heroItem=>{
+        const key = heroItem.hero_name.toLowerCase().replace(/\s+/g,"_");
+        const heroData = heroes[key];
         if(!heroData) return;
-        const div = document.createElement('div');
-        div.className = 'hero';
-        if(isPick) div.classList.add('pick-hero');
-        const img = document.createElement('img');
+        const heroDiv = document.createElement("div");
+        heroDiv.className = "hero pick";
+        const img = document.createElement("img");
         img.src = heroData.image;
         img.title = heroData.name;
-        div.appendChild(img);
-        container.appendChild(div);
+        heroDiv.appendChild(img);
+        row.appendChild(heroDiv);
       });
-    }
 
-    // Pick 阶段
-    const pickSection = document.createElement('div');
-    pickSection.className = 'draft-section';
-    const radiantPick = document.createElement('div'); radiantPick.className='team';
-    radiantPick.innerHTML='<h3>Radiant Pick</h3><div class="heroes-row"></div>';
-    const direPick = document.createElement('div'); direPick.className='team';
-    direPick.innerHTML='<h3>Dire Pick</h3><div class="heroes-row"></div>';
-    pickSection.appendChild(radiantPick);
-    pickSection.appendChild(direPick);
-    renderDraft(radiantPick.querySelector('.heroes-row'), draft.B.R, true);
-    renderDraft(direPick.querySelector('.heroes-row'), draft.B.D, true);
+      teamDiv.appendChild(row);
+      pickSection.appendChild(teamDiv);
+    }));
+    qDiv.appendChild(pickSection);
 
-    // Ban 阶段
-    const banSection = document.createElement('div');
-    banSection.className='draft-section';
-    const radiantBan = document.createElement('div'); radiantBan.className='team';
-    radiantBan.innerHTML='<h3>Radiant Ban</h3><div class="heroes-row"></div>';
-    const direBan = document.createElement('div'); direBan.className='team';
-    direBan.innerHTML='<h3>Dire Ban</h3><div class="heroes-row"></div>';
-    banSection.appendChild(radiantBan);
-    banSection.appendChild(direBan);
-    renderDraft(radiantBan.querySelector('.heroes-row'), draft.R);
-    renderDraft(direBan.querySelector('.heroes-row'), draft.D);
+    // Ban 阶段（下方）
+    const banSection = document.createElement("div");
+    banSection.className="draft-section";
+    ["R","D"].forEach(team=>{
+      const teamDiv = document.createElement("div");
+      teamDiv.className="team";
+      const teamName = document.createElement("h3");
+      teamName.textContent = team==="R"?"Radiant Ban":"Dire Ban";
+      teamDiv.appendChild(teamName);
 
-    questionDiv.appendChild(pickSection);
-    questionDiv.appendChild(banSection);
+      const row = document.createElement("div");
+      row.className="heroes-row";
+
+      draft.B[team].forEach(heroId=>{
+        const heroData = Object.values(heroes).find(h=>h.id===heroId);
+        if(!heroData) return;
+        const heroDiv = document.createElement("div");
+        heroDiv.className = "hero";
+        const img = document.createElement("img");
+        img.src = heroData.image;
+        img.title = heroData.name;
+        heroDiv.appendChild(img);
+        row.appendChild(heroDiv);
+      });
+
+      teamDiv.appendChild(row);
+      banSection.appendChild(teamDiv);
+    }));
+    qDiv.appendChild(banSection);
 
     // 选项
-    const optionsDiv = document.createElement('div');
-    optionsDiv.className='options';
-    const labels = [
-      'A. Radiant一边倒',
-      'B. Radiant略有优势',
-      'C. 势均力敌',
-      'D. Dire略有优势',
-      'E. Dire一边倒'
-    ];
-    labels.forEach((label,i)=>{
-      const id = `q${index}_option${i}`;
-      const option = document.createElement('label');
-      option.innerHTML = `<input type="radio" name="q${index}" value="${label}" id="${id}"> ${label}`;
-      optionsDiv.appendChild(option);
+    const optionsDiv = document.createElement("div");
+    optionsDiv.className="options";
+    ["A. Radiant一边倒","B. Radiant略有优势","C. 势均力敌","D. Dire略有优势","E. Dire一边倒"].forEach((text,i)=>{
+      const label = document.createElement("label");
+      const input = document.createElement("input");
+      input.type="radio";
+      input.name=`question-${index}`;
+      input.value=String.fromCharCode(65+i);
+      label.appendChild(input);
+      label.appendChild(document.createTextNode(text));
+      optionsDiv.appendChild(label);
     });
-    questionDiv.appendChild(optionsDiv);
+    qDiv.appendChild(optionsDiv);
 
-    surveyContainer.appendChild(questionDiv);
+    container.appendChild(qDiv);
   });
 }
 
-loadSurvey();
-
-// 收集结果
-document.getElementById('submit').addEventListener('click',()=>{
-  const surveyContainer = document.getElementById('survey');
-  const questions = surveyContainer.querySelectorAll('.question');
-  const results = {};
+function collectResults() {
+  const questions = document.querySelectorAll(".question");
+  const results = [];
   questions.forEach(q=>{
-    const draftId = q.dataset.draftId;
-    const selected = q.querySelector('input[type=radio]:checked');
-    results[draftId] = selected ? selected.value : null;
+    const id = q.querySelector("h3").textContent.split(":")[1].trim();
+    const selected = q.querySelector("input[type=radio]:checked");
+    results.push({
+      id,
+      answer: selected? selected.value : null
+    });
   });
-  console.log('问卷结果:', results);
-  alert('问卷结果已打印到控制台！');
-  // 可以将 results JSON 上传到服务器或生成下载
-});
-</script>
+  console.log("问卷结果:", results);
+  alert("已提交，结果已打印到控制台");
+}
 
+document.getElementById("submitBtn").addEventListener("click", collectResults);
+
+loadQuestionnaire();
+</script>
 </body>
 </html>
