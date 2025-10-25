@@ -1,133 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dota 2 Draft Visualization</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1a1a1a;
-      color: #fff;
-      margin: 20px;
-    }
-    h2 {
-      text-align: center;
-    }
-    .draft-section {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px 0;
-    }
-    .team {
-      width: 48%;
-    }
-    .team h3 {
-      text-align: center;
-      margin-bottom: 10px;
-    }
-    .heroes-row {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-    .hero {
-      width: 64px;
-      height: 36px;
-      position: relative;
-    }
-    .hero img {
-      width: 100%;
-      height: 100%;
-      border-radius: 4px;
-      border: 2px solid transparent;
-      transition: transform 0.2s, border 0.2s;
-    }
-    .hero img:hover {
-      transform: scale(1.2);
-      z-index: 1;
-    }
-    .model-hero img {
-      border-color: gold;
-      box-shadow: 0 0 10px gold;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dota 2 Draft Viewer</title>
+
+  <style>
+    body {
+      background-color: #1b1f24;
+      color: #fff;
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      letter-spacing: 1px;
+      color: #f5f5f5;
+    }
+
+    .draft-container {
+      display: flex;
+      justify-content: space-between;
+      width: 90%;
+      max-width: 1200px;
+      gap: 40px;
+    }
+
+    .team {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #2a2f36;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px #0006;
+    }
+
+    .team h2 {
+      margin-bottom: 15px;
+      font-size: 22px;
+    }
+
+    .ban-phase, .pick-phase {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-slot {
+      width: 80px;
+      height: 45px;
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .hero-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    .hero-slot:hover {
+      transform: scale(1.08);
+      z-index: 2;
+    }
+
+    .highlight {
+      outline: 3px solid #ffcc00;
+      box-shadow: 0 0 10px #ffcc00;
+    }
+
+    .tooltip {
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 13px;
+      white-space: nowrap;
+      display: none;
+    }
+
+    .hero-slot:hover .tooltip {
+      display: block;
+    }
+
+    .section-label {
+      font-size: 16px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #ccc;
+    }
+
+    .radiant h2 { color: #9be39b; }
+    .dire h2 { color: #e06060; }
+
+  </style>
 </head>
+
 <body>
+  <h1>Dota 2 Draft Visualization</h1>
+  <div class="draft-container">
+    <div class="team radiant">
+      <h2>Radiant</h2>
 
-  <h2>Dota 2 Draft Visualization</h2>
+            <div class="section-label">Picks</div>
+      <div class="pick-phase" id="radiant-picks"></div>
+            <div class="section-label">Bans</div>
+      <div class="ban-phase" id="radiant-bans"></div>
 
-  <div id="ban-section" class="draft-section">
-    <div class="team" id="radiant-ban">
-      <h3>Radiant Ban</h3>
-      <div class="heroes-row"></div>
-    </div>
-    <div class="team" id="dire-ban">
-      <h3>Dire Ban</h3>
-      <div class="heroes-row"></div>
-    </div>
-  </div>
+    </div>
 
-  <div id="pick-section" class="draft-section">
-    <div class="team" id="radiant-pick">
-      <h3>Radiant Pick</h3>
-      <div class="heroes-row"></div>
-    </div>
-    <div class="team" id="dire-pick">
-      <h3>Dire Pick</h3>
-      <div class="heroes-row"></div>
-    </div>
-  </div>
+    <div class="team dire">
+      <h2>Dire</h2>
 
-  <script>
-    async function loadData() {
-      const draftRes = await fetch("draft_results.json");
-      const draft = await draftRes.json();
+            <div class="section-label">Picks</div>
+      <div class="pick-phase" id="dire-picks"></div>
+            <div class="section-label">Bans</div>
+      <div class="ban-phase" id="dire-bans"></div>
 
-      const heroesRes = await fetch("heroes.json");
-      const heroes = await heroesRes.json();
+    </div>
+  </div>
 
-      function renderHeroes(containerId, heroArray, isPick=false) {
-        const container = document.querySelector(`#${containerId} .heroes-row`);
-        container.innerHTML = "";
+  <script>
+    async function loadData() {
+      const [draftRes, heroesRes] = await Promise.all([
+        fetch('./draft_results.json'),
+        fetch('./heroes.json')
+      ]);
+      const draftData = await draftRes.json();
+      const heroes = await heroesRes.json();
 
-        heroArray.forEach(heroItem => {
-          let heroData;
-          if(isPick) {
-            // Pick 阶段只存 hero_id
-            heroData = Object.values(heroes).find(h => h.id === heroItem);
-          } else {
-            // Ban 阶段用 hero_name
-            const key = heroItem.hero_name.toLowerCase().replace(/\s+/g, "_");
-            heroData = heroes[key];
-          }
+      // 取第一个 draft 示例（如有多个可扩展）
+      const draft = Array.isArray(draftData) ? draftData[0] : draftData;
 
-          if(!heroData) return;
+      renderDraft(draft, heroes);
+    }
 
-          const div = document.createElement("div");
-          div.className = "hero";
-          if(!isPick && heroItem.source === "model") div.classList.add("model-hero");
+    function renderDraft(draft, heroes) {
+      const radiantBans = document.getElementById("radiant-bans");
+      const direBans = document.getElementById("dire-bans");
+      const radiantPicks = document.getElementById("radiant-picks");
+      const direPicks = document.getElementById("dire-picks");
 
-          const img = document.createElement("img");
-          img.src = heroData.image;
-          img.title = heroData.name;
+      radiantBans.innerHTML = '';
+      direBans.innerHTML = '';
+      radiantPicks.innerHTML = '';
+      direPicks.innerHTML = '';
 
-          div.appendChild(img);
-          container.appendChild(div);
-        });
-      }
+      // 渲染 Ban 阶段
+      draft.R.forEach(ban => {
+        const slot = createHeroSlot(ban, heroes);
+        radiantBans.appendChild(slot);
+      });
+      draft.D.forEach(ban => {
+        const slot = createHeroSlot(ban, heroes);
+        direBans.appendChild(slot);
+      });
 
-      // Ban 阶段
-      renderHeroes("radiant-ban", draft.R);
-      renderHeroes("dire-ban", draft.D);
+      // 渲染 Pick 阶段
+      draft.B.R.forEach(hero_id => {
+        const hero = findHeroById(hero_id, heroes);
+        const slot = createHeroSlot(hero, heroes);
+        radiantPicks.appendChild(slot);
+      });
+      draft.B.D.forEach(hero_id => {
+        const hero = findHeroById(hero_id, heroes);
+        const slot = createHeroSlot(hero, heroes);
+        direPicks.appendChild(slot);
+      });
+    }
 
-      // Pick 阶段
-      renderHeroes("radiant-pick", draft.B.R, true);
-      renderHeroes("dire-pick", draft.B.D, true);
-    }
+    function findHeroById(id, heroes) {
+      for (const key in heroes) {
+        if (heroes[key].id === id) return heroes[key];
+      }
+      return { name: "Unknown", image: "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/default_full.png" };
+    }
 
-    loadData();
-  </script>
+    function createHeroSlot(hero, heroes) {
+      const slot = document.createElement("div");
+      slot.classList.add("hero-slot");
 
+      // 判断是否模型补出
+      if (hero.source === "model") {
+        slot.classList.add("highlight");
+      }
+
+      // 获取图片
+      let imageUrl;
+      if (hero.image) {
+        imageUrl = hero.image;
+      } else {
+        const key = hero.hero_name
+          ? hero.hero_name.toLowerCase().replace(/\s+/g, "_")
+          : hero.name.toLowerCase().replace(/\s+/g, "_");
+        imageUrl = heroes[key]?.image || "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/default_full.png";
+      }
+
+      const img = document.createElement("img");
+      img.src = imageUrl;
+      img.alt = hero.hero_name || hero.name || "Unknown";
+
+      const tooltip = document.createElement("div");
+      tooltip.classList.add("tooltip");
+      tooltip.textContent = hero.hero_name || hero.name || "Unknown";
+
+      slot.appendChild(img);
+      slot.appendChild(tooltip);
+
+      return slot;
+  S }
+
+    loadData();
+  </script>
 </body>
 </html>
