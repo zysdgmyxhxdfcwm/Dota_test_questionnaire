@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="en"> <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dota 2 阵容打分问卷</title>
-    <style>
+    <title>Dota 2 Draft Rating Survey</title> <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #222;
@@ -145,282 +143,258 @@
 <body>
 
     <div class="survey-container">
-        <h1 style="text-align: center;">Dota 2 阵容打分问卷</h1>
-        <p style="text-align: center; color: #ccc;">请您作为dota2资深玩家，判断以下阵容的优劣势。</p>
-        <form id="draftSurvey" action="https://formspree.io/f/xnnoayda" method="POST">
+        <h1 style="text-align: center;">Dota 2 Draft Rating Survey</h1> <p style="text-align: center; color: #ccc;">As an experienced Dota 2 player, please rate the advantage/disadvantage of the following drafts.</p> <form id="draftSurvey" action="https://formspree.io/f/xnnoayda" method="POST">
     
-        <div class="draft-question" id="question-ban2">
-            <h3>给下面阵容打分：(ID: ban2)</h3>
-            <div class="draft-display">
-                <div class="team-column" id="radiant">
-                    <h4>Radiant</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/marci_full.png" alt="Marci" title="Marci">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/spirit_breaker_full.png" alt="Spirit Breaker" title="Spirit Breaker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/rubick_full.png" alt="Rubick" title="Rubick">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/outworld_destroyer_full.png" alt="Outworld Destroyer" title="Outworld Destroyer">
+            <div class="draft-question" id="question-ban2">
+                <h3>Rate the following draft: (ID: ban2)</h3> <div class="draft-display">
+                    <div class="team-column" id="radiant">
+                        <h4>Radiant</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/marci_full.png" alt="Marci" title="Marci">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/spirit_breaker_full.png" alt="Spirit Breaker" title="Spirit Breaker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/rubick_full.png" alt="Rubick" title="Rubick">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/outworld_destroyer_full.png" alt="Outworld Destroyer" title="Outworld Destroyer">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/night_stalker_full.png" alt="Night Stalker" title="Night Stalker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/viper_full.png" alt="Viper" title="Viper">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/death_prophet_full.png" alt="Death Prophet" title="Death Prophet">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/witch_doctor_full.png" alt="Witch Doctor" title="Witch Doctor">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/night_stalker_full.png" alt="Night Stalker" title="Night Stalker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/viper_full.png" alt="Viper" title="Viper">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/death_prophet_full.png" alt="Death Prophet" title="Death Prophet">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/witch_doctor_full.png" alt="Witch Doctor" title="Witch Doctor">
+                    <div class="team-column" id="dire">
+                        <h4>Dire</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/batrider_full.png" alt="Batrider" title="Batrider">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/elder_titan_full.png" alt="Elder Titan" title="Elder Titan">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/morphling_full.png" alt="Morphling" title="Morphling">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/drow_ranger_full.png" alt="Drow Ranger" title="Drow Ranger">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/beastmaster_full.png" alt="Beastmaster" title="Beastmaster">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/warlock_full.png" alt="Warlock" title="Warlock">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/phantom_assassin_full.png" alt="Phantom Assassin" title="Phantom Assassin">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enigma_full.png" alt="Enigma" title="Enigma">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/void_spirit_full.png" alt="Void Spirit" title="Void Spirit">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="team-column" id="dire">
-                    <h4>Dire</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/batrider_full.png" alt="Batrider" title="Batrider">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/elder_titan_full.png" alt="Elder Titan" title="Elder Titan">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/morphling_full.png" alt="Morphling" title="Morphling">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/drow_ranger_full.png" alt="Drow Ranger" title="Drow Ranger">
-
-                        </div>
+                <fieldset class="options-container">
+                    <legend>Please rate:</legend> <div>
+                        <label>
+                            <input type="radio" name="ban2" value="A" required> A. Radiant Stomp </label>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/beastmaster_full.png" alt="Beastmaster" title="Beastmaster">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/warlock_full.png" alt="Warlock" title="Warlock">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/phantom_assassin_full.png" alt="Phantom Assassin" title="Phantom Assassin">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enigma_full.png" alt="Enigma" title="Enigma">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/void_spirit_full.png" alt="Void Spirit" title="Void Spirit">
-
-                        </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban2" value="B"> B. Radiant Slight Advantage </label>
                     </div>
-                </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban2" value="C"> C. Even Match </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban2" value="D"> D. Dire Slight Advantage </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban2" value="E"> E. Dire Stomp </label>
+                    </div>
+                </fieldset>
             </div>
-            <fieldset class="options-container">
-                <legend>请打分：</legend>
-                <div>
-                    <label>
-                        <input type="radio" name="ban2" value="A" required> A. Radiant一边倒
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban2" value="B"> B. Radiant略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban2" value="C"> C. 势均力敌
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban2" value="D"> D. Dire略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban2" value="E"> E. Dire一边倒
-                    </label>
-                </div>
-            </fieldset>
-        </div>
         
-        <div class="draft-question" id="question-ban7_pick2">
-            <h3>给下面阵容打分：(ID: ban7_pick2)</h3>
-            <div class="draft-display">
-                <div class="team-column" id="radiant">
-                    <h4>Radiant</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/earthshaker_full.png" alt="Earthshaker" title="Earthshaker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/beastmaster_full.png" alt="Beastmaster" title="Beastmaster">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/death_prophet_full.png" alt="Death Prophet" title="Death Prophet">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/viper_full.png" alt="Viper" title="Viper">
+            <div class="draft-question" id="question-ban7_pick2">
+                <h3>Rate the following draft: (ID: ban7_pick2)</h3> <div class="draft-display">
+                    <div class="team-column" id="radiant">
+                        <h4>Radiant</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/earthshaker_full.png" alt="Earthshaker" title="Earthshaker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/beastmaster_full.png" alt="Beastmaster" title="Beastmaster">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/death_prophet_full.png" alt="Death Prophet" title="Death Prophet">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/viper_full.png" alt="Viper" title="Viper">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/centaur_full.png" alt="Centaur" title="Centaur">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/mars_full.png" alt="Mars" title="Mars">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/night_stalker_full.png" alt="Night Stalker" title="Night Stalker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/warlock_full.png" alt="Warlock" title="Warlock">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enigma_full.png" alt="Enigma" title="Enigma">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/centaur_full.png" alt="Centaur" title="Centaur">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/mars_full.png" alt="Mars" title="Mars">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/night_stalker_full.png" alt="Night Stalker" title="Night Stalker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/warlock_full.png" alt="Warlock" title="Warlock">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enigma_full.png" alt="Enigma" title="Enigma">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
+                    <div class="team-column" id="dire">
+                        <h4>Dire</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/marci_full.png" alt="Marci" title="Marci">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/rubick_full.png" alt="Rubick" title="Rubick">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/batrider_full.png" alt="Batrider" title="Batrider">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/morphling_full.png" alt="Morphling" title="Morphling">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/sand_king_full.png" alt="Sand King" title="Sand King">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enchantress_full.png" alt="Enchantress" title="Enchantress">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/monkey_king_full.png" alt="Monkey King" title="Monkey King">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/outworld_destroyer_full.png" alt="Outworld Destroyer" title="Outworld Destroyer">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="team-column" id="dire">
-                    <h4>Dire</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/marci_full.png" alt="Marci" title="Marci">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/rubick_full.png" alt="Rubick" title="Rubick">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/batrider_full.png" alt="Batrider" title="Batrider">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/morphling_full.png" alt="Morphling" title="Morphling">
-
-                        </div>
+                <fieldset class="options-container">
+                    <legend>Please rate:</legend> <div>
+                        <label>
+                            <input type="radio" name="ban7_pick2" value="A" required> A. Radiant Stomp </label>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/sand_king_full.png" alt="Sand King" title="Sand King">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enchantress_full.png" alt="Enchantress" title="Enchantress">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/monkey_king_full.png" alt="Monkey King" title="Monkey King">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/outworld_destroyer_full.png" alt="Outworld Destroyer" title="Outworld Destroyer">
-
-                        </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban7_pick2" value="B"> B. Radiant Slight Advantage </label>
                     </div>
-                </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban7_pick2" value="C"> C. Even Match </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban7_pick2" value="D"> D. Dire Slight Advantage </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="ban7_pick2" value="E"> E. Dire Stomp </label>
+                    </div>
+                </fieldset>
             </div>
-            <fieldset class="options-container">
-                <legend>请打分：</legend>
-                <div>
-                    <label>
-                        <input type="radio" name="ban7_pick2" value="A" required> A. Radiant一边倒
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban7_pick2" value="B"> B. Radiant略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban7_pick2" value="C"> C. 势均力敌
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban7_pick2" value="D"> D. Dire略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="ban7_pick2" value="E"> E. Dire一边倒
-                    </label>
-                </div>
-            </fieldset>
-        </div>
         
-        <div class="draft-question" id="question-last_counter">
-            <h3>给下面阵容打分：(ID: last_counter)</h3>
-            <div class="draft-display">
-                <div class="team-column" id="radiant">
-                    <h4>Radiant</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/earthshaker_full.png" alt="Earthshaker" title="Earthshaker">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/shadow_demon_full.png" alt="Shadow Demon" title="Shadow Demon">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/nevermore_full.png" alt="Nevermore" title="Nevermore">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pugna_full.png" alt="Pugna" title="Pugna">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/juggernaut_full.png" alt="Juggernaut" title="Juggernaut">
+            <div class="draft-question" id="question-last_counter">
+                <h3>Rate the following draft: (ID: last_counter)</h3> <div class="draft-display">
+                    <div class="team-column" id="radiant">
+                        <h4>Radiant</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/earthshaker_full.png" alt="Earthshaker" title="Earthshaker">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/shadow_demon_full.png" alt="Shadow Demon" title="Shadow Demon">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/nevermore_full.png" alt="Nevermore" title="Nevermore">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pugna_full.png" alt="Pugna" title="Pugna">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/juggernaut_full.png" alt="Juggernaut" title="Juggernaut">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/centaur_full.png" alt="Centaur" title="Centaur">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/mars_full.png" alt="Mars" title="Mars">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/antimage_full.png" alt="Antimage" title="Antimage">
+
+                            </div>
                         </div>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bane_full.png" alt="Bane" title="Bane">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/centaur_full.png" alt="Centaur" title="Centaur">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/mars_full.png" alt="Mars" title="Mars">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/bristleback_full.png" alt="Bristleback" title="Bristleback">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/antimage_full.png" alt="Antimage" title="Antimage">
+                    <div class="team-column" id="dire">
+                        <h4>Dire</h4>
+                        <div class="picks-section">
+                            <h5>Pick</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/medusa_full.png" alt="Medusa" title="Medusa">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
 
+                            </div>
+                        </div>
+                        <div class="bans-section">
+                            <h5>Ban</h5>
+                            <div class="hero-images-container">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/sand_king_full.png" alt="Sand King" title="Sand King">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enchantress_full.png" alt="Enchantress" title="Enchantress">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/monkey_king_full.png" alt="Monkey King" title="Monkey King">
+                    <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/ancient_apparition_full.png" alt="Ancient Apparition" title="Ancient Apparition">
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="team-column" id="dire">
-                    <h4>Dire</h4>
-                    <div class="picks-section">
-                        <h5>Pick</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/naga_siren_full.png" alt="Naga Siren" title="Naga Siren">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/pangolier_full.png" alt="Pangolier" title="Pangolier">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/disruptor_full.png" alt="Disruptor" title="Disruptor">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/medusa_full.png" alt="Medusa" title="Medusa">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/tinker_full.png" alt="Tinker" title="Tinker">
-
-                        </div>
+                <fieldset class="options-container">
+                    <legend>Please rate:</legend> <div>
+                        <label>
+                            <input type="radio" name="last_counter" value="A" required> A. Radiant Stomp </label>
                     </div>
-                    <div class="bans-section">
-                        <h5>Ban</h5>
-                        <div class="hero-images-container">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/chen_full.png" alt="Chen" title="Chen">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/sand_king_full.png" alt="Sand King" title="Sand King">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/enchantress_full.png" alt="Enchantress" title="Enchantress">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/monkey_king_full.png" alt="Monkey King" title="Monkey King">
-            <img class="hero-image" src="https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/ancient_apparition_full.png" alt="Ancient Apparition" title="Ancient Apparition">
-
-                        </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="last_counter" value="B"> B. Radiant Slight Advantage </label>
                     </div>
-                </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="last_counter" value="C"> C. Even Match </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="last_counter" value="D"> D. Dire Slight Advantage </label>
+                    </div>
+                    <div>
+                        <label>
+                            <input type="radio" name="last_counter" value="E"> E. Dire Stomp </label>
+                    </div>
+                </fieldset>
             </div>
-            <fieldset class="options-container">
-                <legend>请打分：</legend>
-                <div>
-                    <label>
-                        <input type="radio" name="last_counter" value="A" required> A. Radiant一边倒
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="last_counter" value="B"> B. Radiant略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="last_counter" value="C"> C. 势均力敌
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="last_counter" value="D"> D. Dire略有优势
-                    </label>
-                </div>
-                <div>
-                    <label>
-                        <input type="radio" name="last_counter" value="E"> E. Dire一边倒
-                    </label>
-                </div>
-            </fieldset>
-        </div>
         
-            <button type="submit">提交问卷</button>
-        </form>
+            <button type="submit">Submit Survey</button> </form>
     </div>
 
     <script>
-    // 确保在文档加载完毕后执行
+    // Ensure the script runs after the document is loaded
     document.addEventListener('DOMContentLoaded', loadData);
 
-    // 异步加载JSON数据并构建表单
+    // Asynchronously load JSON data and build the form
     async function loadData() {
         try {
-            // 并发请求两个JSON文件
+            // Fetch both JSON files concurrently
             const [draftsResponse, heroesResponse] = await Promise.all([
                 fetch('draft_results.json'),
                 fetch('heroes.json')
@@ -432,11 +406,11 @@
             const draftsData = await draftsResponse.json();
             const heroesData = await heroesResponse.json();
 
-            // 建立英雄ID到信息的映射
+            // Create a hero ID to info map
             const heroMap = {};
             for (const heroKey in heroesData) {
                 const heroInfo = heroesData[heroKey];
-                // 修正 Outworld Destroyer 的图片路径
+                // Fix for Outworld Destroyer's image path
                 if (heroInfo.id === 76 && heroInfo.image.includes("outworld_destroyer")) {
                      heroInfo.image = "https://cdn.cloudflare.steamstatic.com/apps/dota2/images/heroes/obsidian_destroyer_full.png";
                 }
@@ -446,7 +420,7 @@
                 };
             }
 
-            // 获取英雄信息 (带HTML转义)
+            // Get hero info (with HTML escaping)
             function getHeroInfo(heroId) {
                 const defaultInfo = {
                     "name": "Unknown",
@@ -460,13 +434,13 @@
             }
 
             const formContainer = document.getElementById('draftSurvey');
-            let formHTML = ''; // 存储生成的HTML
+            let formHTML = ''; // To store the generated HTML
 
-            // 遍历所有比赛阵容
+            // Iterate through all drafts
             for (const draft of draftsData) {
                 const draftId = draft.id.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 
-                // --- 生成Picks和Bans的HTML ---
+                // --- Generate HTML for Picks and Bans ---
                 const radiantPicksHtml = draft.R.map(hero => getHeroInfo(hero.hero_id)).map(info =>
                     `<img class="hero-image" src="${info.image}" alt="${info.name}" title="${info.name}">`
                 ).join('');
@@ -483,10 +457,11 @@
                     `<img class="hero-image" src="${info.image}" alt="${info.name}" title="${info.name}">`
                 ).join('') : '';
 
-                // --- 组合成一个问卷题目 ---
+                // --- Combine into one question block ---
+                // Translated
                 formHTML += `
                 <div class="draft-question" id="question-${draftId}">
-                    <h3>给下面阵容打分：(ID: ${draftId})</h3>
+                    <h3>Rate the following draft: (ID: ${draftId})</h3> 
                     <div class="draft-display">
                         <div class="team-column" id="radiant">
                             <h4>Radiant</h4>
@@ -500,8 +475,7 @@
                         </div>
                     </div>
                     <fieldset class="options-container">
-                        <legend>请打分：</legend>
-                        ${['A. Radiant一边倒', 'B. Radiant略有优势', 'C. 势均力敌', 'D. Dire略有优势', 'E. Dire一边倒'].map((label, index) => `
+                        <legend>Please rate:</legend> ${['A. Radiant Stomp', 'B. Radiant Slight Advantage', 'C. Even Match', 'D. Dire Slight Advantage', 'E. Dire Stomp'].map((label, index) => ` 
                         <div>
                             <label>
                                 <input type="radio" name="${draftId}" value="${String.fromCharCode(65 + index)}" required> ${label}
@@ -512,25 +486,25 @@
                 `;
             }
 
-            // 注入HTML并添加提交按钮
-            formContainer.innerHTML = formHTML + `<button type="submit">提交问卷</button>`;
+            // Inject HTML and add submit button
+            formContainer.innerHTML = formHTML + `<button type="submit">Submit Survey</button>`; // Translated
 
-            // 绑定提交事件
+            // Bind the submit event
             formContainer.addEventListener('submit', handleSubmit);
 
         } catch (error) {
-            // 加载失败处理
-            console.error("加载问卷数据时出错:", error);
+            // Handle loading failure
+            console.error("Error loading survey data:", error); // Translated
             document.querySelector('.survey-container').innerHTML = 
-                `<h2 style="color: red; text-align: center;">加载问卷失败</h2>
-                 <p style="text-align: center;">请确保 'draft_results.json' 和 'heroes.json' 文件与 'index.html' 位于同一目录下。</p>
-                 <p style="text-align: center; color: #ccc;">错误详情: ${error.message}</p>`;
+                `<h2 style="color: red; text-align: center;">Failed to load survey</h2> 
+                 <p style="text-align: center;">Please ensure 'draft_results.json' and 'heroes.json' are in the same directory as 'index.html'.</p> 
+                 <p style="text-align: center; color: #ccc;">Error details: ${error.message}</p>`; // Translated
         }
     }
 
-    // 表单提交处理函数 (已修改)
+    // Form submission handler (modified)
     async function handleSubmit(event) {
-        event.preventDefault(); // 阻止表单默认的跳转行为
+        event.preventDefault(); // Prevent default form submission
 
         const form = event.target;
         const formData = new FormData(form);
@@ -538,7 +512,7 @@
         let allAnswered = true;
         const questions = form.querySelectorAll('.draft-question');
 
-        // 检查所有题目是否都回答了
+        // Check if all questions are answered
         for (const question of questions) {
             const draftId = question.id.split('-')[1];
             if (!formData.has(draftId)) {
@@ -552,54 +526,54 @@
         }
 
         if (!allAnswered) {
-            alert('请完成所有题目后再提交！未完成的题目已用红框标出。');
+            alert('Please complete all questions before submitting! Unanswered questions are highlighted in red.'); // Translated
             return;
         }
 
-        // 将数据处理为
+        // Process data
         for (const [key, value] of formData.entries()) {
             results[key] = value;
         }
 
-        // *** 核心修改：替换掉下载逻辑，改为POST到Formspree ***
+        // *** Core change: POST data to Formspree instead of downloading ***
         const submitButton = form.querySelector('button[type="submit"]');
         try {
-            // 禁用按钮，防止重复提交
+            // Disable button to prevent multiple submissions
             submitButton.disabled = true;
-            submitButton.textContent = '正在提交...';
+            submitButton.textContent = 'Submitting...'; // Translated
 
-            // 使用 fetch API 异步提交数据
+            // Use fetch API to submit data asynchronously
             const response = await fetch(form.action, {
                 method: form.method,
-                body: JSON.stringify(results), // 将结果转为JSON字符串发送
+                body: JSON.stringify(results), // Send results as a JSON string
                 headers: {
                     'Accept': 'application/json',
-                    'Content-Type': 'application/json' // 告诉Formspree我们发送的是JSON
+                    'Content-Type': 'application/json' // Tell Formspree we're sending JSON
                 }
             });
 
-            // 提交成功
+            // Submission successful
             if (response.ok) {
-                alert('感谢您的提交！数据已成功发送。');
-                // 显示感谢信息
+                alert('Thank you for your submission! Data sent successfully.'); // Translated
+                // Show thank you message
                 const surveyContainer = form.parentElement;
                 form.style.display = 'none';
                 const thanksMsg = document.createElement('h2');
-                thanksMsg.textContent = '感谢您的参与！';
+                thanksMsg.textContent = 'Thank you for participating!'; // Translated
                 thanksMsg.style.textAlign = 'center';
                 thanksMsg.style.color = '#82dd75';
                 surveyContainer.appendChild(thanksMsg);
             } else {
-                // 提交失败
-                throw new Error('服务器响应失败');
+                // Submission failed
+                throw new Error('Server response failed'); // Translated
             }
 
         } catch (error) {
-            // 网络或其他错误
-            console.error('提交出错:', error);
-            alert('提交失败，请检查网络连接或稍后重试。');
+            // Network or other errors
+            console.error('Submission error:', error); // Translated
+            alert('Submission failed. Please check your internet connection and try again.'); // Translated
             submitButton.disabled = false;
-            submitButton.textContent = '提交问卷';
+            submitButton.textContent = 'Submit Survey'; // Translated
         }
     }
 </script>
